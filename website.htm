@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<script>
+   function openTab(evt, topic) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(topic).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+function openPage(elmnt, pageName, event) {
+  // Hide all elements with class="tabcontent" by default */
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Remove the background color of all tablinks/buttons
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+
+  // Show the specific tab content
+  document.getElementById(pageName).style.display = "block";
+  event.currentTarget.className += " active";
+
+  // Add the specific color to the button used to open the tab content
+  // elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'
+
+</script>
+<style>
+   table,
+        td,
+        th {
+            padding: 2px;
+        }
+ 
+        table {
+            text-align: center;
+        }
+
+.MathJax_Display {
+  text-align: left !important;
+}
+   /* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid black;
+  background-color: dodgerblue;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: dodgerblue;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: gray;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+/* Set height of body and the document to 100% to enable "full page tabs" */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+/* .tablink:hover {
+  background-color: #777;
+} */
+
+.tablink:focus {
+  background-color: transparent;
+}
+.tablink:hover {
+  background-color: gray;
+}
+.anvil-role-primary-color > .tablink:focus {
+  background-color: gray;
+}
+.anvil-role-secondary-color > .tablink:focus {
+  background-color: dodgerblue;
+}
+.anvil-role-primary-color > .tablink:hover {
+  background-color: gray;
+}
+.anvil-role-secondary-color > .tablink:hover {
+  background-color: dodgerblue;
+}
+
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#Home {background-color: red;}
+#News {background-color: green;}
+#Contact {background-color: blue;}
+#About {background-color: orange;}
+</style>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=default'></script>
+
+
+<html>
+   <body>
+      <header>   
+      <h1>Statistical Methods for Physics & Astronomy</h1>
+      <h3>Spring 2024</h3>
+      <!--
+         <nav>
+         <a href=”/html/probabilitybasics.htm” target="_top">Probability Basics</a>
+         <a href=”domain.tld/nonparametrics”>Nonparametrics</a>
+         <a href=”domain.tld/regression”>Regression</a>
+         <a href=”domain.tld/datasmoothing”>Data Smoothing</a>
+         <a href=”domain.tld/pca”>PCA</a>
+         <a href=”domain.tld/timeseries”>Time Series</a>
+         <a href=”domain.tld/clustering”>Clustering</a>
+         <a href=”domain.tld/truncateddata”>Truncated Data</a>
+         <a href=”domain.tld/spatialprocesses”>Spatial Processes</a>
+      </nav>
+   -->
+      </header>
+   
+
+      <head>
+         <title>Statistical Methods in Physics & Astronomy</title>
+         <style>
+            #section1, #section2, #section3, #section4, #section5, #section6, #section7, #section8, #section9{
+               margin: 5px;
+               padding: 3px;
+            }
+            #section1, #section3, #section5, #section7, #section9{
+               background-color: lightblue;
+            }
+            #section2, #section4, #section6, #section8{
+               background-color: lightgray;
+            }
+         </style>
+      </head>
+
+      Navigation <br>
+      
+      <p><a href="#section1">Probability Basics</a></p>
+      <p><a href="#section2">Nonparametrics</a></p>
+      <p><a href="#section3">Regression</a></p>
+      <p><a href="#section4">Data Smoothing</a></p>
+      <p><a href="#section5">PCA</a></p>
+      <p><a href="#section6">Time Series</a></p>
+      <p><a href="#section7">Clustering</a></p>
+      <p><a href="#section8">Truncated Data</a></p>
+      <p><a href="#section9">Spatial Processes</a></p>
+
+      <div id="section1">
+         <h1>Probability Basics</h1>
+         <p>
+            <h2> Probability</h2>
+            <ul>
+               <li>Sample space \(\Omega \): Set of all outcomes of an experiment </li> <br>
+               <li>Event \(A \): Subset of a sample space </li>
+            </ul>
+            <br>
+            <u>Axioms of Probability </u>
+            <ol>
+               <li>$$ {0 \ll P(A) \ll 1} $$</li>
+               <li>$$ P(\Omega) = 1 $$</li>
+               <li> For mutually exclusive events \(A_1, A_2,...\), 
+                  $$ P( A_1 \cup A_2 \cup ...) = P(A_1) + P(A_2) + ... $$
+               </li>
+            </ol>
+            <br>
+            <u>Conditional Probability </u>
+            <ul>
+               <li> For two events \(A, B\) $$ P(A | B) = \frac{P(A \cap B)}{P(B)} $$</li>
+            </ul>
+            
+            <br>
+            <u>Bayes' Theorem</u>
+            <ul>
+                 <li> 
+                  If \(B_1, B_2, ... B_k \) is a partition of the sample space, then for \( i = 1, ... k \) 
+                  $$ P(B_i | A) = \frac{P(A|B_i) P(B_i)}{P(A | B_1) P(B_1) + ... + P(A|B_k)P(B_k)} $$
+                 </li> 
+
+            </ul>
+            
+            <br> <br>
+            <u>Independent Events </u> 
+            <ul>
+               <li>Two events \( A \) and \( B\) are independent if 
+                  $$ P(A \cap B) = P(A)P(B) $$ </li> 
+            </ul>
+
+            <br> <br>
+            <u> Cumulative Distribution Function </u>
+            <ul>
+               <li> Distribution function \(F \) of a random variable \(X \) is 
+                  $$ F(x) = P(X \leq x) = P(\omega \in \Omega: X(\omega) \leq x) $$
+               </li>
+            </ul>
+
+            <br> <br>
+            <u>Means, Expectation Values, Variance </u>
+            <ul>
+               <li>
+                  \(E[X] = \sum_i x_i P(X = x_i) \) 
+               </li>
+               <br>
+               <li>
+                  \(\sigma^2 = Var[X] = E[(X - \mu)^2] = E[X^2] - \mu^2 \) 
+               </li>
+               <br>
+               <li>
+                  \(Cov(X, Y) = E[(X - E[X])(Y - E[Y])] \) 
+               </li>
+            </ul>
+            <br> <br>
+            <u> Distributions </u>
+            <ol>
+               <li> Binomial:  
+                  <ul>
+                     <li> $$ P(X = k) = { n \choose k} p^k (1 - p^{n - k}) $$</li>
+                     <li> $$ E[X] = np $$</li>
+                     <li> $$ Var[X] = np(1 - p) $$</li>
+                  </ul>
+
+               </li> 
+               <li>Poisson: 
+               <ul>
+                  <li> $$ P(X = i) = \frac{\lambda^i e^{-\lambda}}{i!} $$</li>
+                  <li> $$ E[X] = Var(X) = \lambda $$</li>
+                  <li> When \( p\) small and \( n\) large, Binomial \(\approx \) Poisson</li> <br> <br>
+               </ul>
+            </li>
+               <li> Uniform: 
+               <ul>
+                  <li> $$ f(x) = \frac{1}{b - a} \hspace{0.1cm} \mathrm{ for } \hspace{0.1cm} a \lt x \lt b $$</li>
+               </ul>
+            </li>
+               <li> Exponential:  
+                  <ul>
+                     <br>
+                     <li> \( F(x) = 1 - e^{-\lambda x} \) -- exponential distribution function with rate \( \lambda \) </li>
+                     <br>
+                     <li> \( f(x) = \lambda e^{-\lambda x} \) -- pdf </li>
+                     
+                     <li> $$ E[X] = \frac{1}{\lambda} $$</li>
+                     <li> $$ Var(X) = \frac{1}{\lambda^2} $$</li>
+                  </ul>
+               </li>
+               <li> Gaussian:
+                  <ul>
+                     <li> $$ f(x; \mu, \sigma) = \frac{1}{\sqrt{2\pi} \sigma} \exp(-\frac{(x - \mu)^2}{2\sigma^2})$$ </li>
+                  </ul>
+               </li>
+            </ol>
+            <h2> Inference</h2>
+            <u> Point Estimation</u>
+            <ol>
+               <li> Method of moments <br><br>
+                  <ul>
+                     <li> \(k \)th moment of a random variable \(X\) with distribution \(F \) is 
+                        $$ \mu_k(X) = E[X^k] = \int x^k dF(x) $$
+                     </li>
+                     <li> For a random sample \( X_i \), the \(k \)th sample moment is 
+                        $$\hat{\mu}_k = \frac{1}{n} \sum_{i=1}^n X_i^k $$
+                     </li>
+                  </ul>
+               </li>
+               <li> Maximum likelihood <br><br>
+                  <ul>
+                     <li> For random variables \(X_1, X_2,...,X_n \) with a common density function \(f(\cdot ; \theta) \)
+                        $$\begin{align} &L(\theta) = \prod_{i=1}^{n} f(X_i; \theta) \\
+                        &l(\theta) = \ln L(\theta) = \sum_{i=1}^n \ln f(X_i, \theta) \end{align}$$
+                     </li>
+                  </ul>
+               </li>
+            </ol>
+            <br>
+            <u> Resampling</u><br>
+            <ol>
+               <li> Jackknife<br><br>
+                  <ul>
+                     <li> Basically delete every ith point from the dataset to create a sample, and then calculate whatever parameter you want </li><br>
+                     <li> This gives you i measurements which you can use to assess the uncertainty in whatever you are measuring</li><br><br>
+                  </ul>
+               </li>
+               <li> Bootstrap <br><br> 
+                  <ul>
+                     <li> Generate new data by repeatedly sampling your data with replacement</li><br>
+                     <li> Usually use about \(10^3 - 10^4 \) samples</li><br>
+                     <li> Then calculate whatever parameter, and find its confidence levels</li><br>
+                  </ul>
+               </li>
+            </ol>
+         </p>
+      </div>
+
+      <div id="section2">
+         <h1> Nonparametrics</h1>
+         <p>
+         <ol>
+            <li>Procedures that don't depend on parametric assumptions (though underlying distribution might belong to parametric family):
+               KS test, rank statistics, sign test, Wilcoxon rank test 
+            </li>
+            <br>
+            <li> Methods that don't require data to belong to parametric family: Contingency tables, histograms, kernel
+               smoothing, knn <br><br>
+            </li>
+         </ol>
+         <u> Summary of Tests</u>
+         <ol> 
+            <li> KS test (also see handout) <br><br>
+            <ul>
+               <li> Measures maximum distance between e.d.f and model or second e.d.f </li><br>
+               <li> Less efficient in finding small-scale differences near tails </li><br>
+               <li> Good to get a sense of whether two variables are distributed in the same way </li><br><br>
+            </ul>
+         </li>
+         <li> Sign Test<br><br>
+            <ul>
+               <li> Compares number of points above and below the assumed value</li><br><br>
+            </ul>
+         </li>
+         <li> Wilcoxon Rank Test (also see handout)<br><br>
+            <ul>
+               <li> Merges the two samples, then ranks them</li><br>
+               <li> Like a nonparametric t-test -- looks for difference between sample medians</li><br>
+            </ul>
+         </li>
+         </ol>
+         <u> Contingency Tables </u>
+         <ul> 
+            <li> Used for categorical variables e.g. male or female and tall or short  </li> <br>
+            <li> Example: Fisher's Exact Test </li> <br>
+            <table>
+               <tr>
+                 <th> </th>
+                  <th>male</th>
+                 <th>female</th>
+                 <th> </th>
+               </tr>
+               <tr>
+                  <td> </td>
+                  <td colspan="2"><hr/></td>
+                  <td> </td>
+               </tr>
+               <tr>
+                 <th>tall</th>
+                 <td> 9 </td>
+                 <td> 3 </td>
+                 <th> 12 </th>
+               </tr>
+               <tr>
+                  <td> </td>
+                  <td colspan="2"><hr/></td>
+                  <td> </td>
+               </tr>
+               <tr>
+                 <th>short</th>
+                 <td>21</td>
+                 <td>17</td>
+                 <th> 38 </th>
+               </tr>
+               <tr>
+                  <td> </td>
+                  <td colspan="2"><hr/></td>
+                  <td> </td>
+               </tr>
+               <tr>
+                  <th> </th>
+                  <th> 30 </th>
+                  <th> 20 </th>
+                  <th> 50</th>
+               </tr> 
+             </table>
+             <br><br>
+             Null hypothesis: Odds of getting tall or short do not depend on whether the person is M or F <br><br>
+             Sample odds of male being tall \( = \frac{9}{21} \) <br><br>
+             Sample odds of female being tall \( = \frac{3}{17} \) <br><br>
+             Sample odds ratio \(= \frac{\frac{9}{21}}{\frac{3}{17}} = 2.429\) <br><br>
+             What is the probability of getting the table above if the null hypothesis is true, with a sample of 20 <br><br>
+             $$ \begin{align}
+             P &= \frac{\text{(# ways to choose 3 out of 12)(# ways to choose 17 out of 38)}}{\text{# ways to choose 20 out of 50}} \\
+             &= \frac{{12 \choose 3}{38 \choose 17}}{{50 \choose 20}}
+             \end{align} $$
+             This is a hypergeometric distribution.
+         </ul>
+         <u> Spearman's Rank Test </u>
+         <ul>
+            <li> Test for independence between two variables, e.g., is height independent of hand length?</li>
+         </ul>
+         <u> Kendall's \(\tau \) Test </u>
+         <ul>
+            <li> Same thing as Spearman, but is better for smaller samples </li><br>
+         </ul>
+      </p>
+      </div>
+
+      <div id="section3">
+         <h1> Regression</h1>
+         <p>
+            <u> Least-squares linear regression </u>
+            <ol>
+               <li> Ordinary least-squares <br><br>
+                  <ul>
+                     <li> Minimises residual sum of squares between observed and predicted </li><br><br>
+                  </ul>
+               </li>
+               <li>Symmetric least-squares<br><br>
+                  <ul>
+                     <li> Look for a joint symmetrical relationship between the variables instead of just comparing observation and response</li><br><br>
+                  </ul>
+
+               </li>
+               <li> Quantile regression<br><br>
+                  <ul>
+                     <li> Instead of just finding the mean \(Y\) values as a smooth function of \(X \), this looks at the quantile curves</li><br>
+                     <li> Why? Takes into account how \(Y \) might be distributed </li> <br><br>
+                  </ul>
+               </li>
+
+            </ol>
+
+            <u> Weighted least-squares</u>
+            <ul>
+               <li> Weights each observation by its uncertainty</li> <br>
+               <li> So observations with bigger errors have less of an effect</li> <br>
+            </ul>
+
+            <u> Non-linear regression</u>
+            <ol>
+               <li> Poisson regression <br><br>
+                  <ul>
+                     <li> Response variable \(Y \) is an enumeration of events following the Poisson distribution</li> <br>
+                     <li> In X-ray and gamma-ray stuff: spectra, images, light curves show dependency of photon counts on wavelength, sky position and time</li> <br>
+                     <li> Other: luminosity functions, mass functions, spectral lines, redshift, etc.</li> <br>
+                     <li> Most common model: </li> 
+                     $$ P_{\mu_i}(Y = y_i) = \frac{e^{-\mu_i} \mu_i^{y_i}}{ y_i !} $$
+                     $$ E[Y | x] = e^{\beta X} $$
+                     <li>Also called loglinear model because</li>
+                     $$ \ln E[Y | X] = \ln \mu = \beta X $$
+                  </ul>
+               </li>
+            </ol>
+         </p>
+         <br>
+      </div>
+
+      <div id="section4">
+         <h1> Data Smoothing </h1>
+         <p>
+            <u>Histograms </u> 
+               <ul>
+                  <li> Constant bin width, ususually $$ h_{Scott} = \frac{3.5 s.d.}{n^{1/3}} $$
+                  </li>
+               </ul>
+            <u> Kernel density estimators</u>
+            <ul>
+               <li> Make a function, and convolve with data to smooth it </li> <br> <br>
+               <li> Kernel estimator with constant bandwith:
+                  $$ \hat{f} (x, h) = \frac{1}{nh} \sum_{i=1}^n K\Big(\frac{x - X_i}{h} \Big) $$
+                  where the kernel function \(K \) is normalised, i.e., \( \int K(x) dx = 1 \)
+               </li>
+
+            </ul>
+            <u> Adaptive smoothing</u>
+            <ol>
+               <li>Adaptive kernel estimators<br><br>
+               <ul>
+                  <li> Basically change the bin width as you're going based on the data properties</li> <br>
+                  <li> Some portions of the data will need difference sized bins in order to capture the trend</li> <br><br>
+               </ul>
+            </li>
+            <li> Nearest neighbours<br><br>
+               <ul>
+                  <li> Kernel is calculated based on the distance \( d_k \) to the k-th nearest neighbour</li>
+                  $$ \hat{f}_{knn} (x) = \frac{k/2n}{d_k(x)} $$
+                  <li> \( \sim 1\) if the data are uniformly distributed</li> <br>
+                  <li> Scales with inverse of distance encompassing \(k\) nearby data points </li> <br>
+               </ul>
+            </ol>
+            <u>Spline smoothing</u>
+            <ul>
+               <li> Linear spline: construct curve between the knots that requires continuity but not derivatability</li><br>
+               <li> Cubic spline: same thing, but require the first and second derivatives to be continuous</li><br>
+               <li> Bsplines: Take the number of knots and create a basis function for each. Then the curve is some linear combination of these basis functions</li><br><br>
+            </ul>   
+         </p>
+
+
+      </div>
+      
+
+      <div id="section5">
+            <h1> Principal Component Analysis (PCA)</h1>
+            <p>
+               References: Jollife, Principal Component Analysis & Stone, Independent Component Analysis <br> <br>
+            <u> Covariance </u>  <br> <br>
+            <ul> 
+               <li> Let \(\beta_1, \beta_2 \) be attributes (i.e., what you would label the axes). <br><br> </li>
+               <li> For example, suppose we have t people and n attributes: </li> <br>
+               <table>
+                  <tr>
+                    <th> </th>
+                     <th>\(\beta_1 \) (height) </th>
+                     <th>\(\beta_2 \) (weight) </th>
+                     <th>\(\beta_3 \) (age) </th>
+                     <th> ... </th>
+                     <th>\(\beta_n \) (whatever) </th>
+                    <th> </th>
+                  </tr>
+                  <tr>
+                    <th>person 1 </th>
+                    <td> ... </td>
+                    <td> ... </td>
+                    <td> ... </td>
+                    <td> ... </td>
+                    <td> ... </td>
+                  </tr>
+                  <tr>
+                     <th>person 2 </th>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                   </tr>
+                   <tr>
+                     <th>person 3 </th>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                   </tr>
+                   <tr>
+                     <th> ... </th>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                   </tr>
+                   <tr>
+                     <th>person t </th>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                     <td> ... </td>
+                   </tr>
+                </table><br>
+               <li> This matrix-like thing will be called \(d^T \)   </li> <br>
+               <li> Then 
+                  $$ \begin{align}
+                  \sigma_{\beta_1\beta_2} &= cov(\beta_1, \beta_2) \\
+                  &= E[(\beta_1 - \underbrace{\mu_{\beta_1}}_\text{mean 1})(\beta_2 - \underbrace{\mu_{\beta_2}}_\text{mean 2})] \\
+                  &= E(\beta_1 \beta_2) - E(\beta_1)E(\beta_2)
+                  \end{align} $$
+               </li><br>
+               <li> \(\beta_1, \beta_2 \) independent \(\Rightarrow cov(\beta_1,\beta_2) = 0 \) -- other way is NOT true in general! </li>
+            </ul>
+            <u> Covariance Matrix </u> \(\overset{\leftrightarrow}{\Sigma} \)  <br> <br>
+            <ul>
+               <li> Can also use \(\delta_{ij} \) to make sample covariance matrix \(\overset{\leftrightarrow}{S} \) (preserves diagonal components)</li>
+               $$\underbrace{\overset{\leftrightarrow}{\Sigma}}_\text{operator} = \begin{bmatrix} 
+               \sigma_{\beta_1}^2 & \sigma_{\beta_1\beta_2} & ... & \sigma_{\beta_1\beta_n} \\
+               \sigma_{\beta_2\beta_1} & \sigma_{\beta_2}^2 & ... & ... \\
+               ... & & & ... \\
+               \sigma_{\beta_n \beta_1} & ... & ... & \sigma_{\beta_n}^2
+               \end{bmatrix}$$ Manifestation of an operator in a certain basis is a matrix. <br> <br>
+               <li> If \(\langle \beta_i \rangle = 0 \hspace{0.1cm} \forall i = 1,...,t \): </li>
+               $$\begin{align}
+               &\sigma_{\beta_i}^2 = E(\beta_i^2) \\
+               &\sigma_{\beta_i \beta_j} = E(\beta_i\beta_j)
+               \end{align}$$ since the means are 0 (this is centered data) <br><br>
+               <li> Set 
+                  $$ \overset{\leftrightarrow}{ \langle \beta \rangle } = \begin{bmatrix} 
+                  \langle \beta_1 \rangle & \langle \beta_1 \rangle & ... & \langle \beta_1 \rangle \\
+                  ... & & & \\
+                  \langle \beta_n \rangle & \langle \beta_n \rangle & ... & \langle \beta_n \rangle
+               \end{bmatrix}$$
+               <li> Then take the data matrix and subtract this off (i.e. subtract away the mean) to centre the dat and call this \(\overset{\leftrightarrow}{x} \)</li>
+            </ul>
+            <u> Finding PCA components</u>
+            <ul>
+               <li> Want the axis where the dispersion of data is maximised. </li> <br>
+               <li> Goal: Find some combination of weights \(w_i \) with \(i = 1,...,n \) that maximises \(\sigma_i^2 \), making sure that each axis is orthogonal (i.e., the covariance is 0)</li>
+            </ul>
+            <u> Procedure</u>
+            <ol>
+               <li> Make data matrix \(\overset{\leftrightarrow}{d} \)</li> <br>
+               <li> Centre the data to form matrix \(\overset{\leftrightarrow}{x}\) </li> <br>
+               <li> Construct the covariance matrix \(\overset{\leftrightarrow}{\Sigma}_x \) </li> <br>
+               <li> Find eigenvalues and eigenvectors of \(\overset{\leftrightarrow}{\Sigma}_x \) <br> <br>
+               <ul>
+                  <li> These are the variances and PCA components respectively </li> <br>
+               </ul>
+            </li>
+               <li> Plot each data point in PCA space and interpret</li> <br>
+            </ol>
+
+            </li>
+            <u> Independent Component Analysis</u>
+            <ul>
+               <li> Similar to PCA, except we require the component to be independent (not just uncorrelated)</li>
+            </ul>
+            <table>
+               <tr>
+                  <th> PCA </th>
+                  <th> ICA </th>
+               </tr>
+               <tr>
+                  <td>PC1 and PC2 uncorrelated</td>
+                  <td> IC1 and IC2 are uncorrelated</td>
+               </tr>
+               <tr>
+                  <td> PC1 \(\perp \) PC2 when plotted on data axes \(\hspace{1cm}\)</td>
+                  <td> IC1 is not \(\perp \) to IC2 when plotted on data axes</td>
+               </tr>
+               <tr>
+                  <td> PC1 not independent of PC2</td>
+                  <td> IC1 is independent of IC2 </td>
+               </tr>
+            </table>
+            <br>
+            <u> Procedure </u>
+            <ol>
+               <li> Make data matrix </li><br>
+               <li> Make covariance matrix </li><br>
+               <li> Find eigenvectors of covariance matrix -- these are the PCs </li><br>
+               <li> Reduce dimensionality of the PCs (not all will be necessary to explain the spread in the data)</li><br>
+               <li> Find the ICs from the PCs; these will be the sources</li><br>
+            </ol>
+            </p>
+
+         </div>
+         
+         <div id="section6">
+            <h1> Time Series </h1>
+            <ul>
+               <li> To find short-term variations, use a low-pass filter</li><br>
+               <li> To find long-term variations, use a high-pass filter</li><br>
+            </ul>
+            <h2> Evenly-spaced Data </h2>
+            <u> Autocorrelation</u><br>
+            <ul>
+               <li> ACF captures degree to which values at different separations in time vary together, by measuring the ratio of the variance with lag time k to the sample covariance</li><br>
+               <li> Strong values at low k with small values at high k imply a low-order autoregressive process</li><br>
+               <li> Data with one characteristic time scale will have a wave-like pattern of positive and negative values</li><br>
+               <li> PACF removes the effects of correlations at shorter lags</li><br>
+            </ul>
+            <u> Fourier power spectrum</u><br>
+            <ul>
+               <li> Basically decompose the function into a linear combination of sines and cosines</li><br>
+               <li> Changes time space to frequency space (periodogram)</li><br><br>
+            </ul>
+            <h2> Unevenly-spaced Data</h2>
+            <u> Discrete correlation function</u><br>
+            <ul>
+               <li> ACF except it avoids interpolating the unevenly spaced data onto a regular grid</li><br>
+            </ul>
+            <u> Structure function</u><br>
+            <ul>
+               <li> Another measure of autocorrelation</li><br>
+               <li> When data has a characteristic time scale of \(\tau \), this will be small at shorter than \( \tau\), rise and peak around \( \tau\), and then plateaus</li><br>
+            </ul>
+            <u> Lomb-Scargle periodogram</u><br>
+            <ul>
+               <li> Similar to Fourier power spectrum, except it does not require the data to be evenly spaced</li><br>
+            </ul>
+            <u> Other periodograms</u><br>
+            <ol>
+               <li> Minimum string length <br><br>
+                  <ul>
+                     <li> Sum of the length of lines connecting values as the phase goes from 0 to \( 2\pi\) <br>
+                     </li>
+                     <li> Large line length means the signal is scattered (i.e., that's not the right period) and vice versa</li><br>
+                  </ul>
+               </li>
+            </ol>
+            <u> Wavelets </u>
+            <ul>
+               <li> Pick a "mini wave" and then step it across your data, convolving as you go</li><br>
+               <li> Different types (and lengths) of wavelets will pick up different periodic signals</li><br>
+            </ul>
+
+         </div>
+         
+         <div id="section7">
+            <h1> Clustering</h1>
+            
+               <u> Hierarchical clustering (unsupervised)</u>
+                  <ul>
+                     <li> Find groupings in multivariate data without any parametric assumptions or prior knowledge of clustering</li><br>
+                     <li> Single linkage clustering is the same as k-nn</li><br>
+                     <li> Complete linkage clustering udes the distance to the furtherest, rather than the closest, member of the group resulting in more symmetrical and compact groups</li><br>
+                     <li> Average linkage takes the mean distance </li><br>
+                  </ul>
+               
+               <u>Clusters with substructure or noise </u> 
+               <ul>
+                  <li> Use DBSCAN -- doesn't require knowledge of the number of clusters in advance</li><br>
+                  <li> Separates out the background noise, i.e., doesn't force everything to belong to a cluster</li><br>
+               </ul>
+
+               <u> Supervised classification </u>
+               <ol>
+                  <li> Linear discriminant analysis (LDA)</li><br>
+                  <ul>
+                     <li> Geometrically, projection of the p-dimensional data point cloud onto a 1D line in p-space that maximally separates the classes</li><br>
+                     <li> Basically find linear combinations of the data points are constructed to maximise the separation of the two classes</li><br>
+                     <li> Class of generalised LDAs are Support Vector Machines (SVM)</li><br>
+                  </ul>
+               </ol>
+            
+
+         </div>
+
+         <div id="section8">
+            <h1> Truncated Data</h1>
+            <!--  <h2> Survival Analysis</h2> -->
+            <ul>
+               <li> Censoring: object is known to exist, the observation has been made, but the object is undetected because its value is fainter than some limit</li><br>
+               <li> Truncation: some unknown number of objects exist below the detection limit</li>
+            </ul>
+            <h2> Censoring </h2>
+            <u> Survival function </u>
+            $$ \begin{align}
+            S(x) &= P(X \gt x) \\
+            &= 1 - F(x)
+            \end{align}$$
+            <ul>
+               <li> \(S(x) \) is the probability that an object has a value above some specified level</li> <br>
+               <li> Hazard rate: 
+                  $$\begin{align} h(x) &= \frac{f(x)}{S(x)} \\
+                  &= -\frac{d ln S(x)}{dx} 
+                  
+                  \end{align} $$
+               </li>
+               <li> So value of the p.d.f. at a chosen value is the product of the survival and hazard functions at that value</li>
+               <li> Proportional hazard rate: 
+                  $$ h(x) = h_0 e^{-\beta x} $$
+
+               </li>
+               <li> Estimating \(\beta \) is Cox regression</li>
+            </ul>
+            <u> Kaplan-Meier estimator</u>
+            <ul>
+               <li> For left-censored situations, cumulative hazard function is 
+                  $$\overset{\hat{}}{H}_{KM}(x) = \sum_{x_i \geq x}  \frac{d_i}{N_i}$$
+
+               </li>
+               <li> The survival function estimator is 
+                  $$ \overset{\hat{}}{S}_{KM}(x) = \prod_{x_i \geq x}  \Big(1 - \frac{d_i}{N_i}\Big) $$
+
+               </li>
+               <li> Data need to be randomly censored</li>
+            </ul>
+            <u> Two-sample tests</u>
+            <ul>
+               <li> "What is the chance that two censored datasets do not arise from the same underlying distribution?"</li><br>
+               <li> Does not make assumption of random censoring like KM</li>
+               <li> Gehan test -- Wilcoxon test for survival data</li>
+            </ul>
+            <h2> Truncation </h2>
+            <u> Lynden-Bell--Woodroofe estimator</u>
+            <ul>
+               <li> Analagous to KM but for randomly truncated data</li><br>
+               <li> Unbiased, consistent, generalised maximum likelihood estimator</li><br>
+            </ul>
+         </div>
+      
+
+         <div id="section9">
+            <h1> Spatial Processes </h1>
+            <u> Concepts</u>
+            <ul>
+               <li> Point processes: sets of irregular patterns of points in a p-dimensional space</li><br>
+               <li> Considered stationary if their properties are invariant under spatial translation and isotropic if invariant under rotation</li><br>
+               <li> Intensity of a stationary point process is \(\lambda \) s.t.</li>
+               $$ E[N] = \lambda \nu_p $$
+               is the expected number of points in a unit volume of p-space.<br><br>
+               <li> Poisson point process just means \(N \sim Pois(\lambda \nu_p) \) and so \(\hat{\lambda} = \frac{n}{\nu_p} \)</li><br>
+               <li> Stationary Poisson point process produces complete spatial randomness (CSR)</li><br>
+               <li> Spatial autocorrelation: Moran's I, Geary's c (both extensions of Pearson correlation), variogram \(\gamma \)</li><br>
+               <li> Spatial behvaiour: Kriging, interpolation</li><br>
+               <li> Spatial clustering: F, G, L, K and two-point correlation functions</li><br>
+            </ul>
+
+            <u> Variogram </u>
+            <ul>
+               <li> Maps the variance on different scales across the survey area</li><br>
+               <li> Offset at 0 distance is the nugget </li><br>
+               <li> Amount the curve rises is the sill</li><br>
+               <li> Distance at which curve asymptotes is the range</li><br>
+            </ul>
+
+            <u> Kriging </u>
+            <ul>
+               <li> Write each point as the mean plus some deviation 
+                  $$ Z_i = \mu_i + \epsilon_i $$
+               </li>
+               <li> Interpolation point is 
+                  $$ \hat{Z} = \sum_{i=1}^n \lambda_i Z_i $$
+               </li>
+               <li> Want to minimise 
+                  $$ E[(\hat{Z} - Z_0)^2] $$
+                  subject to
+                  $$ \sum_{i=1}^n \lambda_i = 1 $$
+               </li>
+               <li> Simple kriging: used if the mean is known</li><br>
+               <li> Block kriging: merging adjacent points for a large dataset</li><br>
+               <li> Co-kriging: two variables at each location </li><br>
+               <li> Universal kriging: first removes trend in the data</li><br>
+               <li> Nonlinear kriging: used when trends are not linear</li><br>
+               <li> Multitype kriging: categorial covariates</li><br>
+            </ul>
+
+            <u> Ripley's K function</u>
+            <ul>
+               <li> Average number of points within distance d of observed points weighted by process intensity
+               </li><br>
+            </ul>
+
+            <u> Tessellations</u>
+            <ul>
+               <li> Voronoi tessellations: line bisectors perpendicular to line segments, partititioning space into polygons around data points</li>
+            </ul>
+            
+
+         </div>
+
+        <br><br> 
+      <footer>
+         
+      </footer>
+    </body>
+
+
+</html>
